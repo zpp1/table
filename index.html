@@ -62,14 +62,23 @@
     </tr>
 </table>
 <script>
+    /*
+    * get函数（目标对象，属性路径，赋值）；
+    * 假如value有值就是赋值操作，
+    * 没有的话就是获取对象属性的操作
+    *
+    *
+    *
+    * */
     function get(obj, path, value) {
         var arr = path.split('.'),as;
         if (value) {
             for (var i = 0; i < arr.length; i++) {
-                if (i == arr.length - 1) {
+                if (i === arr.length - 1) {
                     obj[arr[i]] = value;
                 } else {
-                    obj[arr[i]] = {};
+                    if(!obj[arr[i]])
+                        obj[arr[i]] = {};
                     var clonearr = arr.concat();
                     var path = arr.splice(1).join('.');
                     get(obj[clonearr[i]], path, value);
@@ -81,7 +90,7 @@
                 if (as) {
                     as = as[arr[i]];
                     if (value) {
-                        if (i == arr.length) {
+                        if (i ===arr.length) {
                             as = value;
                         }
                     }
@@ -96,12 +105,13 @@
     var ojb = {
         foo: {
             bar: {
-                name: 'llll'
+                name:'llll',
+                age:'qwe'
             }
         }
-    }
-
-
+    };
+        get(ojb,'foo.bar.age','rty');
+    console.log(ojb);
 
 
 </script>

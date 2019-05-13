@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>上传file属性</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+<body>
+<input id="input-file" class="upload" type="file" value="">
+<img src="" alt="">
+<div style="width: 100px;height: 100px;background: red"></div>
+</body>
+<script>
+   // "use strict";
+    var div=document.getElementsByTagName('div')[0],handler;
+     handler= true&&function close() {
+        var startx,starty;
+      return    function (e) {
+            this.style.position = 'absolute';
+            if (e.type == 'mousedown') {
+                startx = e.offsetX;
+                starty = e.offsetY;
+                this.addEventListener('mousemove',handler );
+                this.addEventListener('mouseup',handler );
+            } else if (e.type == 'mousemove') {
+                this.style.left = e.clientX - startx + 'px';
+
+                this.style.top = e.clientY - starty + 'px';
+            } else {
+                this.removeEventListener(
+                    'mousemove', handler
+                )
+            }
+        }
+    }()
+    div.addEventListener('mousedown',handler);
+     var as=!function(){
+
+     }();
+    console.log(as);
+    {
+        let s=1;
+    }
+
+
+
+</script>
+
+</html>

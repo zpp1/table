@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: #000;
+            transition: all 1s;
+        }
+        div:hover{
+            width: 300px;
+            transition: all 1s;
+            background: #12de1a;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function asd(){
+        setTimeout(function(){
+            console.log(1);
+        },2000)
+    };
+    async function d(){
+        await asd();
+        console.log(12);
+        return {
+            a:1,
+        }
+    }
+
+    d().then((v)=>{
+        console.log(v);
+
+    });
+
+</script>
+</body>
+</html>

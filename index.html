@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="colResizable-1.6.js"></script>
+</head>
+<style>
+    .a{
+        position: absolute;
+        left: -999px;
+
+    }
+    body{
+        overflow: hidden;
+    }
+
+</style>
+<body>
+<button>123</button>
+
+<table class="a" style="background: red;">
+   <tr><th>1</th>
+    <th>2</th>
+ <th>3</th></tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>32</td>
+        <td>132</td>
+    </tr>
+    <tr>
+        <td>131</td>
+        <td>3213</td>
+        <td>32131</td>
+    </tr>
+</table>
+<table>
+    <tr><th>1</th>
+        <th>2</th>
+        <th>3</th></tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>32</td>
+        <td>132</td>
+    </tr>
+    <tr>
+        <td>131</td>
+        <td>3213</td>
+        <td>32131</td>
+    </tr>
+</table>
+<script>
+    function get(obj, path, value) {
+        var arr = path.split('.'),as;
+        if (value) {
+            for (var i = 0; i < arr.length; i++) {
+                if (i == arr.length - 1) {
+                    obj[arr[i]] = value;
+                } else {
+                    obj[arr[i]] = {};
+                    var clonearr = arr.concat();
+                    var path = arr.splice(1).join('.');
+                    get(obj[clonearr[i]], path, value);
+                }
+            }
+            return obj
+        } else {
+            for (var i = 0; i < arr.length; i++) {
+                if (as) {
+                    as = as[arr[i]];
+                    if (value) {
+                        if (i == arr.length) {
+                            as = value;
+                        }
+                    }
+                } else {
+                    as = obj[arr[i]]
+                }
+            }
+            return as;
+        }
+    }
+
+    var ojb = {
+        foo: {
+            bar: {
+                name: 'llll'
+            }
+        }
+    }
+    console.log(get(ojb, 'foo.bar.name'));
+    ojb = {};
+
+
+    get(ojb, 'foo.bar.name', 'good');
+    console.log(ojb);
+
+
+</script>
+</body>
+</html>
